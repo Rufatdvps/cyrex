@@ -11,24 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        run: mkdir ehmed
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
+        run: echo "salam millet" > ehmed/hello.txt
 
       - name: Build with Maven
-        run: mvn clean install
-
-      - name: Deploy to Docker
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: your-docker-registry/spring-petclinic:${{ github.sha }}
-
-      - name: Deploy to Kubernetes
-        uses: appleboy/kubectl-action@master
-        with:
-          args: create -f kubernetes-deployment.yaml
+        run: cat ehmed/hello.txt
